@@ -114,7 +114,6 @@ Rubyをインストールする
    ```
    </br></br></br>
 
-
 EC2にログインする
 ---------
 1. Cloud9にキーペアをドラッグ&ドロップで転送する
@@ -137,5 +136,21 @@ EC2にログインする
 
 リポジトリをクローンする
 ---------
-- 以下のコマンドを実行
-- 
+1.  Cloud9で以下のコマンドを実行
+  ```
+  $ git clone リポジトリのURL
+  $ cd アプリケーション名
+  $ scp -i ~/.ssh/practice-aws.pem ec2-user@IPアドレス:GitHubのリポジトリ名/.env ./
+  # 上記コマンドでデプロイ先にある .env をコピー
+  $ scp -i ~/.ssh/practice-aws.pem ec2-user@IPアドレス:GitHubのリポジトリ名/config/master.key ./config/
+  # 同様にmaster.keyをコピー
+  $ bundle install
+  $ rails db:migrate
+  $ rails db:seed
+  $ yarn install
+  $ rails s
+  ```
+2. 完了
+</br></br></br>
+
+以上
