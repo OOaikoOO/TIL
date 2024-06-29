@@ -114,6 +114,66 @@ Rubyをインストールする
    ```
    </br></br></br>
 
+Cloud9の容量を変更する
+---------
+1. Cloud9のコンソール画面で、使用するCloud9を選択した状態で「詳細を表示」をクリック
+2. 「EC2インスタンスの管理」をクリック
+3. 使用するEC2インスタンスのインスタンスIDをクリック
+4. 「ストレージ」タブをクリック
+5. 「ボリュームID」をクリック
+6. ボリューム名のチェックボックスにチェックをつけ、アクションメニューのプルダウンメニューから「ボリュームの変更」をクリック
+7. 「サイズ」のフォームに「20」と入力して「変更」、表示されるポップアップも「変更」して完了
+8. インスタンスの状態が「実行中」だった場合は、一旦「停止」してから再度開始して使用する
+</br></br></br>
+
+Railsをインストールする
+---------
+※前提：</br>
+以下のコマンドでRubyのバージョンが3.1.2であることを確認する
+```
+username:~/environment $ ruby -v
+ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-linux] 
+```
+</br></br>
+1. Cloud9で必要なソフトウェアをインストールする
+   ```
+   username:~/environment $ wget https://wals.s3.ap-northeast-1.amazonaws.com/curriculum/rails/environment.sh 
+   ```
+2. ファイル`environment.sh`がダウンロードされていることを確認する
+3. 以下のコマンドを実行する
+   ```
+   username:~/environment $ sh environment.sh
+   ```
+4. インストールされたソフトウェアが正しいバージョンでインストールされたかを確認する
+   ```
+    username:~/environment $ rails -v
+    (出力)Rails 6.1.4
+   ```
+5. 他の必要なソフトウェアのバージョンを確認する
+   ```
+    username:~/environment $ node -v
+    (出力)v18.17.1
+    username:~/environment $ yarn -v
+    (出力)1.22.19
+    username:~/environment $ convert -version
+    (出力)Version: ImageMagick 7.1.1-5 Q16-HDRI x86_64 92a5afcfa:20230326 https://imagemagick.org
+    (出力)Copyright: (C) 1999 ImageMagick Studio LLC
+    (出力)License: https://imagemagick.org/script/license.php
+    (出力)Features: Cipher DPC HDRI OpenMP(4.5) 
+    (出力)Delegates (built-in): jng jpeg lzma png tiff webp xml zlib
+    (出力)Compiler: gcc (7.3)
+   ```
+6. sqliteのバージョンの確認をする
+   ```
+    username:~/environment $ irb
+    3.1.2 :001 > require 'sqlite3'(入力する)
+    (出力) => true 
+    3.1.2 :002 > SQLite3::SQLITE_VERSION(入力する)
+    (出力) => "3.36.0" 
+    3.1.2 :003 > exit(入力する)
+   ```
+</br></br>
+
 EC2にログインする
 ---------
 1. Cloud9にキーペアをドラッグ&ドロップで転送する
